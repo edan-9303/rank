@@ -17,10 +17,18 @@ public class SpringConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/", "login").permitAll();
+                    registry.requestMatchers("/login").permitAll();
                     registry.anyRequest().authenticated();
                 })
                 .oauth2Login(oauth2 -> oauth2.successHandler(oauth2LoginSuccessHandler))
+                .exceptionHandling(exceptions ->
+                        exceptions
+                                .accessDeniedPage("/access-denied")  // 접근 거부 시 리다이렉트할 페이지 설정
+                )
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/login")  // 로그인 페이지 설정
+                        .permitAll()           // 로그인 페이지는 누구나 접근 가능
+                )
                 .build();
     }
 }

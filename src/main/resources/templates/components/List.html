@@ -1,0 +1,9 @@
+<ul th:fragment="userList">
+    <li th:each="user : ${users}">
+        <p th:text="${user.email}">No email available</p>
+        <p th:text="${user.tier}">No email available</p>
+        <p th:text="${user.rating}">No email available</p>
+        <p th:text="${user.name}">No email available</p>
+        <p th:text="${user.profilePictureUrl}">No email available</p>
+    </li>
+</ul>

@@ -27,13 +27,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // Spring Boot Starter Web
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
@@ -42,10 +40,13 @@ dependencies {
 
     // Spring Security OAuth2 Client
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
-    // MySQL JDBC 드라이버
-    runtimeOnly 'mysql:mysql-connector-java:8.0.32'  // MySQL 드라이버 추가
-
+    // mariadb JDBC 드라이버
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:3.5.0'
+    implementation 'org.thymeleaf:thymeleaf:3.1.2.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
 
 tasks.named('test') {

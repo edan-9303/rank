@@ -2,14 +2,17 @@ package com.example.airlinerating;
 
 import com.example.airlinerating.DTO.UserDTO;
 import com.example.airlinerating.service.UserService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.util.List;
 
-@RestController
+@Controller
 public class MainController {
     private final UserService userService;
 
@@ -17,19 +20,24 @@ public class MainController {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
-    public String home() {
-        return "Welcome";
+    @GetMapping("/")
+    public String index(@AuthenticationPrincipal OAuth2User user, Model model) {
+        if (user == null) {
+            return "login";
+        }
+        List<UserDTO> users = userService.getUsers();
+        model.addAttribute("users", users);
+
+        return "index";
     }
 
-    @RequestMapping("/user")
+    @RequestMapping("/dashboard")
     public Principal user(Principal user) {
         return user;
     }
 
-    @ResponseBody
-    @RequestMapping("/users")
-    public List<UserDTO> getUsers() {
-        return userService.getUsers();
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }
