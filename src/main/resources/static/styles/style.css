@@ -1,0 +1,136 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container-content {
+    width: 500px;
+}
+
+.logo-container {
+    background-image: url("../images/logo.png");
+    width: 100%;
+    height: 300px;
+    margin-top: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.list-element {
+    display: flex;
+    flex-direction: row;
+    border: 1px black solid;
+}
+
+.img-element {
+    display: flex;
+    flex-direction: column;
+}
+
+.img-element div:nth-child(2) {
+    display: inline-block;
+    width: 60%;
+}
+
+.img-element div:nth-child(3) {
+    display: inline-block;
+    width: 20%;
+}
+
+.img-element img {
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.list-content-data {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    text-overflow-ellipsis: true;
+    align-items: center;
+}
+
+.user-info-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+/* 사용자 목록 스타일 */
+.user-list {
+    display: flex;
+    flex-direction: column; /* 세로로 나열되도록 설정 */
+    gap: 10px; /* 각 항목 사이 간격 */
+    list-style: none;
+    padding: 0;
+}
+
+/* 사용자 카드 스타일 */
+.user-card {
+    display: flex;
+    width: 500px;
+    height: 100px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 사용자 카드 hover 효과 */
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 사용자 이미지 스타일 */
+.user-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-right: 2px solid #ddd;
+}
+
+/* 사용자 정보 스타일 */
+.user-info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-image {
+    display: inline-block;
+}
+
+.user-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0 10px;
+}
+
+.user-email {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.user-tier, .user-rating {
+    display: flex;
+    font-size: 0.9rem;
+    color: #777777;
+    font-weight: bolder;
+    margin-top: 5px;
+
+}
+
+.user-tier div:nth-child(2) {
+    margin-left: 3px;
+}

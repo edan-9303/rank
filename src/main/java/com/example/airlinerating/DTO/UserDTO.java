@@ -6,9 +6,9 @@ public class UserDTO {
     String nickName;
     String profilePictureUrl;
     int rating;
-    String tier;
+    TierDTO tier;
 
-    public UserDTO(String email, String name, String nickName, String profilePictureUrl, int rating, String tier) {
+    public UserDTO(String email, String name, String nickName, String profilePictureUrl, int rating, TierDTO tier) {
         this.email = email;
         this.name = name;
         this.nickName = nickName;
@@ -57,11 +57,11 @@ public class UserDTO {
         this.rating = rating;
     }
 
-    public String getTier() {
+    public TierDTO getTier() {
         return tier;
     }
 
-    public void setTier(String tier) {
-        this.tier = tier;
+    public void setTier(TierDTO tierDTO) {
+        this.tier = tierDTO;
     }
 }

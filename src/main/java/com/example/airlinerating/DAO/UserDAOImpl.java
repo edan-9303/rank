@@ -24,7 +24,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<UserDTO> getUsers() {
-        List<User> users = userRepository.findAll();
+        List<User> users = userRepository.findAllByOrderByRatingDesc();
         return users.stream().map(INSTANCE::userToUserDTO)
                 .collect(Collectors.toList());
     }

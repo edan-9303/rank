@@ -1,116 +1,183 @@
 package com.example.airlinerating.util;
 
+import com.example.airlinerating.DTO.TierDTO;
+
 public class Tier {
-    public static String getRank(int rank) {
+
+
+    public static TierDTO getRank(int rank) {
+        TierDTO tierDTO = new TierDTO();
+
         if (rank >= 2200) {
-            return "챌린저";
+            tierDTO.setTier("challenger");
+            tierDTO.setTierNumber(rank + "");
+            return tierDTO;
         } else if (rank >= 1800) {
-            return getMasterRank(rank);
+            return getMasterRank(rank, tierDTO);
         } else if (rank >= 1600) {
-            return getDiamondRank(rank);
+            return getDiamondRank(rank, tierDTO);
         } else if (rank >= 1400) {
-            return getEmeraldRank(rank);
+            return getEmeraldRank(rank, tierDTO);
         } else if (rank >= 1200) {
-            return getPlatinumRank(rank);
+            return getPlatinumRank(rank, tierDTO);
         } else if (rank >= 1000) {
-            return getGoldRank(rank);
+            return getGoldRank(rank, tierDTO);
         } else if (rank >= 800) {
-            return getSilverRank(rank);
+            return getSilverRank(rank, tierDTO);
         } else if (rank >= 600) {
-            return getIronRank(rank);
+            return getIronRank(rank, tierDTO);
         } else {
-            return "점수가 범위에 없습니다.";
+            tierDTO.setTier("unranked");
+            tierDTO.setTierNumber("");
+            return tierDTO;
         }
     }
 
     // 아이언 등급
-    public static String getIronRank(int rank) {
+    public static TierDTO getIronRank(int rank, TierDTO tierDTO) {
         if (rank >= 750) {
-            return "아이언 1";
+            tierDTO.setTier("iron");
+            tierDTO.setTierNumber("1");
+            return tierDTO;
         } else if (rank >= 700) {
-            return "아이언 2";
+            tierDTO.setTier("iron");
+            tierDTO.setTierNumber("2");
+            return tierDTO;
         } else if (rank >= 650) {
-            return "아이언 3";
+            tierDTO.setTier("iron");
+            tierDTO.setTierNumber("3");
+            return tierDTO;
         } else {
-            return "아이언 4";
+            tierDTO.setTier("iron");
+            tierDTO.setTierNumber("4");
+            return tierDTO;
         }
     }
 
     // 실버 등급
-    public static String getSilverRank(int rank) {
+    public static TierDTO getSilverRank(int rank, TierDTO tierDTO) {
         if (rank >= 950) {
-            return "실버 1";
+            tierDTO.setTier("silver");
+            tierDTO.setTierNumber("1");
+            return tierDTO;
         } else if (rank >= 900) {
-            return "실버 2";
+            tierDTO.setTier("silver");
+            tierDTO.setTierNumber("2");
+            return tierDTO;
         } else if (rank >= 850) {
-            return "실버 3";
+            tierDTO.setTier("silver");
+            tierDTO.setTierNumber("3");
+            return tierDTO;
         } else {
-            return "실버 4";
+            tierDTO.setTier("silver");
+            tierDTO.setTierNumber("4");
+            return tierDTO;
         }
     }
 
     // 골드 등급
-    public static String getGoldRank(int rank) {
+    public static TierDTO getGoldRank(int rank, TierDTO tierDTO) {
         if (rank >= 1150) {
-            return "골드 1";
+            tierDTO.setTier("gold");
+            tierDTO.setTierNumber("1");
+            return tierDTO;
         } else if (rank >= 1100) {
-            return "골드 2";
+            tierDTO.setTier("gold");
+            tierDTO.setTierNumber("2");
+            return tierDTO;
         } else if (rank >= 1050) {
-            return "골드 3";
+            tierDTO.setTier("gold");
+            tierDTO.setTierNumber("3");
+            return tierDTO;
         } else {
-            return "골드 4";
+            tierDTO.setTier("gold");
+            tierDTO.setTierNumber("4");
+            return tierDTO;
         }
     }
 
     // 플래티넘 등급
-    public static String getPlatinumRank(int rank) {
+    public static TierDTO getPlatinumRank(int rank, TierDTO tierDTO) {
         if (rank >= 1350) {
-            return "플래티넘 1";
+            tierDTO.setTier("platinum");
+            tierDTO.setTierNumber("1");
+            return tierDTO;
         } else if (rank >= 1300) {
-            return "플래티넘 2";
+            tierDTO.setTier("platinum");
+            tierDTO.setTierNumber("2");
+            return tierDTO;
         } else if (rank >= 1250) {
-            return "플래티넘 3";
+            tierDTO.setTier("platinum");
+            tierDTO.setTierNumber("3");
+            return tierDTO;
         } else {
-            return "플래티넘 4";
+            tierDTO.setTier("platinum");
+            tierDTO.setTierNumber("4");
+            return tierDTO;
         }
     }
 
     // 에메랄드 등급
-    public static String getEmeraldRank(int rank) {
+    public static TierDTO getEmeraldRank(int rank, TierDTO tierDTO) {
         if (rank >= 1450) {
-            return "에메랄드 1";
+            tierDTO.setTier("emerald");
+            tierDTO.setTierNumber("1");
+            return tierDTO;
         } else if (rank >= 1400) {
-            return "에메랄드 2";
+            tierDTO.setTier("emerald");
+            tierDTO.setTierNumber("2");
+            return tierDTO;
         } else if (rank >= 1350) {
-            return "에메랄드 3";
+            tierDTO.setTier("emerald");
+            tierDTO.setTierNumber("3");
+            return tierDTO;
         } else {
-            return "에메랄드 4";
+            tierDTO.setTier("emerald");
+            tierDTO.setTierNumber("4");
+            return tierDTO;
         }
     }
 
     // 다이아몬드 등급
-    public static String getDiamondRank(int rank) {
+    public static TierDTO getDiamondRank(int rank, TierDTO tierDTO) {
         if (rank >= 1550) {
-            return "다이아몬드 1";
+            tierDTO.setTier("diamond");
+            tierDTO.setTierNumber("1");
+
+            return tierDTO;
         } else if (rank >= 1500) {
-            return "다이아몬드 2";
+            tierDTO.setTier("diamond");
+            tierDTO.setTierNumber("2");
+            return tierDTO;
         } else if (rank >= 1450) {
-            return "다이아몬드 3";
+            tierDTO.setTier("diamond");
+            tierDTO.setTierNumber("3");
+            return tierDTO;
         } else {
-            return "다이아몬드 4";
+            tierDTO.setTier("diamond");
+            tierDTO.setTierNumber("4");
+            return tierDTO;
         }
     }
 
     // 마스터 등급
-    public static String getMasterRank(int rank) {
+    public static TierDTO getMasterRank(int rank, TierDTO tierDTO) {
         if (rank >= 1700) {
-            return "마스터 1";
+            tierDTO.setTier("master");
+            tierDTO.setTierNumber("1");
+            return tierDTO;
         } else if (rank >= 1650) {
-            return "마스터 2";
+            tierDTO.setTier("master");
+            tierDTO.setTierNumber("2");
+            return tierDTO;
         } else if (rank >= 1600) {
-            return "마스터 3";
+            tierDTO.setTier("master");
+            tierDTO.setTierNumber("3");
+            return tierDTO;
         } else {
-            return "마스터 4";
+            tierDTO.setTier("master");
+            tierDTO.setTierNumber("4");
+            return tierDTO;
         }
     }
 }

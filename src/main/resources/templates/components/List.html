@@ -1,9 +1,28 @@
-<ul th:fragment="userList">
-    <li th:each="user : ${users}">
-        <p th:text="${user.email}">No email available</p>
-        <p th:text="${user.tier}">No email available</p>
-        <p th:text="${user.rating}">No email available</p>
-        <p th:text="${user.name}">No email available</p>
-        <p th:text="${user.profilePictureUrl}">No email available</p>
+<ul class="user-list" th:fragment="userList">
+    <li class="user-card" th:each="user : ${users}">
+        <div class="user-image">
+            <img
+                    alt="대체 이미지"
+                    class="user-image"
+                    th:src="@{/images/{imageName}.png(imageName=${user.tier.tier})}"/>
+        </div>
+        <div class="user-info">
+            <div class="user-info-container">
+
+                <img alt="대체 이미지" th:src="${user.profilePictureUrl}"/>
+                <p class="user-name" th:text="${user.name}"></p>
+            </div>
+            <div class="user-tier">
+                <div th:text="${user.tier.tier}">No email available</div>
+                <div th:text="${user.tier.tierNumber}"></div>
+            </div>
+        </div>
+
+        <!--        <div class="list-content-data">-->
+        <!--            <img alt="대체 이미지" th:src="${user.profilePictureUrl}"/>-->
+        <!--            <p th:text="${user.name}">No name available</p>-->
+        <!--        </div>-->
+
+
     </li>
 </ul>
