@@ -25,6 +25,7 @@ public class MainController {
         if (user == null) {
             return "login";
         }
+
         List<UserDTO> users = userService.getUsers();
         model.addAttribute("users", users);
 
@@ -40,4 +41,15 @@ public class MainController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("/addgame")
+    public String addGame() {
+        return "addgame";
+    }
+
+    @GetMapping("/nicknameSetting")
+    public String nicknameSetting() {
+        return "nicknameSetting";
+    }
+
 }

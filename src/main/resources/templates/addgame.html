@@ -1,0 +1,208 @@
+<html>
+
+<head th:include="~{header}">
+</head>
+<head>
+    <link rel="stylesheet" th:href="@{/styles/formStyle.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="container-content">
+        <div class="logo-container"></div>
+        <form id="userForm" method="post" onsubmit="confirmSubmission(event)" th:action="@{/api/addGame}">
+            <div id="userContainer">
+            </div>
+            <p class="notice">회원 검색이 안되면 "게스트" 입력</p>
+            <button id="addButton" type="button">+ Add User</button>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    const userForm = document.getElementById('userForm');
+    // 사용자 목록을 가져오기 위한 AJAX 호출
+    const getUserList = async (query) => {
+        const response = await fetch(`/api/users?search=${query}`);
+        const data = await response.json();
+        return data;  // {emails: ['email1@example.com', 'email2@example.com']}
+    }
+
+    function confirmSubmission(event) {
+        var message = /*[[${alertMessage}]]*/ "제출하시겠습니까? 제출한 이후에는 수정이 불가합니다.";  // 타임리프 표현식
+
+        // 경고 메시지 표시
+        var userConfirmed = confirm(message);
+
+        // 사용자가 "OK"를 클릭했으면 폼을 제출, 아니면 제출 방지
+        if (!userConfirmed) {
+            event.preventDefault();  // 폼 제출을 막음
+        }
+    }
+
+    // 이메일 입력에 따른 드롭다운 처리
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const addButton = document.getElementById('addButton');
+        const userContainer = document.getElementById('userContainer');
+
+        // + 버튼을 눌러서 사용자 입력 라인 추가
+        addButton.addEventListener('click', () => {
+            const newUserEntry = document.createElement('div');
+            newUserEntry.classList.add('form-row');
+            const dropdownList = document.createElement('div');
+
+            // Email 입력 항목 생성
+            const emailFormItem = document.createElement('div');
+            emailFormItem.classList.add('form-item');
+            const emailLabel = document.createElement('label');
+            emailLabel.setAttribute('for', 'email');
+            emailLabel.textContent = 'Email';
+            const emailInput = document.createElement('input');
+            emailInput.type = 'text';
+            emailInput.classList.add('email-input');
+            emailInput.setAttribute('name', 'email[]');
+            emailInput.setAttribute('placeholder', '이름으로 검색');
+            emailInput.setAttribute('autocomplete', 'off');
+            emailInput.addEventListener('input', async e => {
+                if (e.target.classList.contains('email-input')) {
+                    const input = e.target;
+                    const searchTerm = input.value.trim();
+
+                    if (searchTerm) {
+                        const users = await getUserList(searchTerm);
+
+                        dropdownList.innerHTML = ''; // 기존 목록 초기화
+
+                        users.forEach(({email, name}) => {
+                            const item = document.createElement('div');
+                            item.textContent = `${name} (${email})`;
+                            item.name = email
+                            item.classList.add('dropdown-item');
+                            item.addEventListener('click', () => {
+                                input.value = email;
+                                dropdownList.style.display = 'none';  // 드롭다운 닫기
+                            });
+                            dropdownList.appendChild(item);
+                        });
+
+                        dropdownList.style.display = users.length ? 'block' : 'none';
+                    } else {
+                        dropdownList.style.display = 'none';
+                    }
+                }
+            })
+
+
+            emailFormItem.appendChild(emailLabel);
+            emailFormItem.appendChild(emailInput);
+
+            // Dropdown 리스트 생성
+            dropdownList.classList.add('dropdown-list');
+            dropdownList.style.display = 'none';
+            dropdownList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('dropdown-item')) {
+                    emailInput.value = e.target.name;
+                }
+            });
+
+
+            // Rank 입력 항목 생성
+            const rankFormItem = document.createElement('div');
+            rankFormItem.classList.add('form-item');
+            const rankLabel = document.createElement('label');
+            rankLabel.setAttribute('for', 'rank');
+            rankLabel.textContent = '등수(숫자로만)';
+            const rankInput = document.createElement('input');
+            rankInput.setAttribute('id', 'rank');
+            rankInput.setAttribute('type', 'number');
+            rankInput.setAttribute('name', 'rank[]');
+            rankInput.setAttribute('value', '0');
+
+            rankFormItem.appendChild(rankLabel);
+            rankFormItem.appendChild(rankInput);
+
+            // Rebuyins 입력 항목 생성
+            const rebuyinsFormItem = document.createElement('div');
+            rebuyinsFormItem.classList.add('form-item');
+            const rebuyinsLabel = document.createElement('label');
+            rebuyinsLabel.setAttribute('for', 'rebuyins');
+            rebuyinsLabel.textContent = '리바인 횟수(숫자)';
+            const rebuyinsInput = document.createElement('input');
+            rebuyinsInput.setAttribute('id', 'rebuyins');
+            rebuyinsInput.setAttribute('placeholder', '리바인 횟수');
+            rebuyinsInput.setAttribute('type', 'number');
+            rebuyinsInput.setAttribute('name', 'rebuyin[]');
+
+            rebuyinsFormItem.appendChild(rebuyinsLabel);
+            rebuyinsFormItem.appendChild(rebuyinsInput);
+
+            // 제거 버튼 생성
+            const removeButton = document.createElement('button');
+            removeButton.setAttribute('type', 'button');
+            removeButton.classList.add('remove-button');
+            removeButton.textContent = '-';
+
+            // 모든 요소를 form-row에 추가
+            newUserEntry.appendChild(emailFormItem);
+            newUserEntry.appendChild(dropdownList);
+            newUserEntry.appendChild(rankFormItem);
+            newUserEntry.appendChild(rebuyinsFormItem);
+            newUserEntry.appendChild(removeButton);
+
+            // form-row를 userContainer에 추가
+            userContainer.appendChild(newUserEntry);
+
+        });
+
+        // 이메일 입력 필드에 대해 드롭다운 검색
+        userContainer.addEventListener('input', async (e) => {
+            // if (e.target.classList.contains('email-input')) {
+            //     const input = e.target;
+            //     const dropdown = emailInput.nextElementSibling// .dropdown-list
+            //     const searchTerm = input.value.trim();
+            //     console.log(input.value)
+            //
+            //     if (searchTerm) {
+            //         const users = await getUserList(searchTerm);
+            //
+            //         dropdown.innerHTML = ''; // 기존 목록 초기화
+            //
+            //         users.forEach(({email, name}) => {
+            //             const item = document.createElement('div');
+            //             item.textContent = `${name} (${email})`;
+            //             item.name = email
+            //             item.classList.add('dropdown-item');
+            //             item.addEventListener('click', () => {
+            //                 input.value = email;
+            //                 dropdown.style.display = 'none';  // 드롭다운 닫기
+            //             });
+            //             dropdown.appendChild(item);
+            //         });
+            //
+            //         dropdown.style.display = users.length ? 'block' : 'none';
+            //     } else {
+            //         dropdown.style.display = 'none';
+            //     }
+            // }
+        });
+
+        // 드롭다운 항목 클릭 시, 해당 이메일 입력칸에 반영
+        userContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('dropdown-item')) {
+                const input = e.target.closest('.form-row').querySelector('.email-input');
+                input.value = e.target.name;
+            }
+        });
+
+        // 라인 삭제 버튼 처리
+        userContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-button')) {
+                const entry = e.target.closest('.form-row');
+                userContainer.removeChild(entry);
+            }
+        });
+    });
+
+</script>
+</html>

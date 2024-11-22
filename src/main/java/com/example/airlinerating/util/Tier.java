@@ -5,7 +5,7 @@ import com.example.airlinerating.DTO.TierDTO;
 public class Tier {
 
 
-    public static TierDTO getRank(int rank) {
+    public static TierDTO getRank(double rank) {
         TierDTO tierDTO = new TierDTO();
 
         if (rank >= 2200) {
@@ -34,7 +34,7 @@ public class Tier {
     }
 
     // 아이언 등급
-    public static TierDTO getIronRank(int rank, TierDTO tierDTO) {
+    public static TierDTO getIronRank(double rank, TierDTO tierDTO) {
         if (rank >= 750) {
             tierDTO.setTier("iron");
             tierDTO.setTierNumber("1");
@@ -55,7 +55,7 @@ public class Tier {
     }
 
     // 실버 등급
-    public static TierDTO getSilverRank(int rank, TierDTO tierDTO) {
+    public static TierDTO getSilverRank(double rank, TierDTO tierDTO) {
         if (rank >= 950) {
             tierDTO.setTier("silver");
             tierDTO.setTierNumber("1");
@@ -76,7 +76,7 @@ public class Tier {
     }
 
     // 골드 등급
-    public static TierDTO getGoldRank(int rank, TierDTO tierDTO) {
+    public static TierDTO getGoldRank(double rank, TierDTO tierDTO) {
         if (rank >= 1150) {
             tierDTO.setTier("gold");
             tierDTO.setTierNumber("1");
@@ -97,7 +97,7 @@ public class Tier {
     }
 
     // 플래티넘 등급
-    public static TierDTO getPlatinumRank(int rank, TierDTO tierDTO) {
+    public static TierDTO getPlatinumRank(double rank, TierDTO tierDTO) {
         if (rank >= 1350) {
             tierDTO.setTier("platinum");
             tierDTO.setTierNumber("1");
@@ -118,7 +118,7 @@ public class Tier {
     }
 
     // 에메랄드 등급
-    public static TierDTO getEmeraldRank(int rank, TierDTO tierDTO) {
+    public static TierDTO getEmeraldRank(double rank, TierDTO tierDTO) {
         if (rank >= 1450) {
             tierDTO.setTier("emerald");
             tierDTO.setTierNumber("1");
@@ -139,7 +139,7 @@ public class Tier {
     }
 
     // 다이아몬드 등급
-    public static TierDTO getDiamondRank(int rank, TierDTO tierDTO) {
+    public static TierDTO getDiamondRank(double rank, TierDTO tierDTO) {
         if (rank >= 1550) {
             tierDTO.setTier("diamond");
             tierDTO.setTierNumber("1");
@@ -161,7 +161,7 @@ public class Tier {
     }
 
     // 마스터 등급
-    public static TierDTO getMasterRank(int rank, TierDTO tierDTO) {
+    public static TierDTO getMasterRank(double rank, TierDTO tierDTO) {
         if (rank >= 1700) {
             tierDTO.setTier("master");
             tierDTO.setTierNumber("1");

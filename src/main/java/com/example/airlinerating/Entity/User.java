@@ -11,11 +11,10 @@ public class User {
 
     private String name;
 
-
     private String nickName;
 
     private String profilePictureUrl;
-    private int rating;
+    private double rating;
 
     public User(String email, String name, String nickName, String profilePictureUrl, int rating) {
         this.email = email;
@@ -57,11 +56,11 @@ public class User {
         this.profilePictureUrl = profilePictureUrl;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rank) {
+    public void setRating(double rank) {
         this.rating = rank;
     }
 

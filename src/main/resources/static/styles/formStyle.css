@@ -1,0 +1,108 @@
+/* 전체 form-row를 flex로 설정 */
+.form-row {
+    display: flex;
+    align-items: center; /* 세로로 가운데 정렬 */
+    gap: 20px; /* 각 항목 간의 간격 */
+    flex-wrap: wrap; /* 화면 크기에 맞게 줄바꿈 허용 (반응형) */
+    margin-bottom: 20px;
+    position: relative;
+
+}
+
+/* 각 form-item을 flex 항목으로 설정 */
+.form-item {
+    flex: 1; /* 항목이 같은 비율로 공간을 차지하도록 설정 */
+    min-width: 120px; /* 각 항목의 최소 너비 */
+}
+
+/* 각 input 요소에 대한 스타일 */
+.form-item input {
+    width: 100%; /* 각 input이 부모 div의 너비를 꽉 채우도록 설정 */
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 이메일 input 스타일 (dropdown 등을 고려해서 넓이를 더 조정할 수 있습니다) */
+.email-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* + Add User 버튼의 스타일 */
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 유저 항목이 추가될 때의 스타일 */
+.user-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-item input {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.remove-button {
+    background-color: #dc3545;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+.remove-button:hover {
+    background-color: #c82333;
+}
+
+.dropdown-list {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+    top: 60px;
+}
+
+.dropdown-item {
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #007bff;
+    color: white;
+}

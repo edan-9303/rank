@@ -12,6 +12,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Component
 public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
@@ -32,16 +33,16 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         String profilePictureUrl = oauth2User.getAttribute("picture");
 
         // 사용자 정보 DB에 저장
-        User user = userRepository.findByEmail(email);
-
+        Optional<User> user = userRepository.findByEmail(email);
+        User newUser = new User();
         // 사용자 정보가 없으면 새로 저장
-        if (user == null) {
-            user = new User(email, name, "", profilePictureUrl, -1);
+        if (user.isEmpty()) {
+            newUser = new User(email, name, "", profilePictureUrl, -1);
             // rank
             // mmr 기본은 -1 = unranked
             // mmr 처음 머니인 = 1200점 시작
             // mmr 처음 노머니인 = 1000점 시작
-            userRepository.save(user);
+            userRepository.save(newUser);
         }
 
 
