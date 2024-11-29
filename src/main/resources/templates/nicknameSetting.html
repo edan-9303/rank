@@ -8,7 +8,7 @@
 <div class="container">
     <div class="container-content">
         <div class="logo-container"></div>
-        <form method="post" th:action="@{/api/updateUser}">
+        <form method="post" onsubmit="return validateForm()" th:action="@{/api/updateUser}">
             <label for="nickname">사용하실 닉네임을 입력하세요:</label><br>
             <input id="nickname" name="nickname" required type="text"><br>
             <label for="name">본인의 이름을 입력하세요:</label><br>
@@ -18,4 +18,16 @@
     </div>
 </div>
 </body>
+<script>
+    function validateForm() {
+        var nickname = document.getElementById('nickname').value;
+        var name = document.getElementById('name').value;
+
+        if (nickname == "" || name == "") {
+            alert("닉네임과 이름을 모두 입력해주세요!");
+            return false;
+        }
+        return true;
+    }
+</script>
 </html>

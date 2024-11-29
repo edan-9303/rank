@@ -57,9 +57,9 @@ public class UserController {
     }
 
     @PostMapping("/updateUser")
-    public Object updateUser(
+    public ResponseEntity<String> updateUser(
             OAuth2AuthenticationToken authentication, @RequestParam String nickname,
-            @RequestParam String name) {
+            @RequestParam String name, HttpServletResponse response) throws IOException {
 
         // Authentication에서 UserDetails를 가져오기
         DefaultOidcUser principal = (DefaultOidcUser) authentication.getPrincipal();
@@ -69,6 +69,7 @@ public class UserController {
         String email = principal.getEmail();
 
         userService.updateUserDetails(email, name, nickname);
-        return "index";
+        response.sendRedirect("/");
+        return ResponseEntity.ok("Form submitted successfully");  // 이 줄은 사실 실행되지 않음
     }
 }
