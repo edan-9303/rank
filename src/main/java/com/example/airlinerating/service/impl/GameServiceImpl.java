@@ -91,7 +91,7 @@ public class GameServiceImpl implements GameService {
 
             // 총 rebuyins 합을 기준으로 보상
             double reward = -sumRatings;
-            double ratingBonus = reward * rewardPercentage;
+            double ratingBonus = (reward * 1.3) * rewardPercentage;
 
             if (!game.getEmail().equals("게스트")) {
                 User user = userRepository.findByEmail(game.getEmail())
