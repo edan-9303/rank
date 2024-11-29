@@ -21,7 +21,10 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String index(@AuthenticationPrincipal OAuth2User user, Model model) {
+    public String index(Model model) {
+        List<UserDTO> users = userService.getUsers();
+        model.addAttribute("users", users);
+
         return "index";
     }
 
@@ -41,9 +44,6 @@ public class MainController {
             return "login";
         }
 
-        List<UserDTO> users = userService.getUsers();
-        model.addAttribute("users", users);
-
         return "addgame";
     }
 
@@ -52,9 +52,7 @@ public class MainController {
         if (user == null) {
             return "login";
         }
-
-        List<UserDTO> users = userService.getUsers();
-        model.addAttribute("users", users);
+t
         return "nicknameSetting";
     }
 
