@@ -45,7 +45,7 @@ public class GameServiceImpl implements GameService {
         } else if (game.getRebuyins() == 2) {
             ratingChange = -25;
         } else if (game.getRebuyins() == 3) {
-            ratingChange = -50;
+            ratingChange = -45;
         }
 
         User user;

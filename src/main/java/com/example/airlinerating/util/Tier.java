@@ -8,23 +8,23 @@ public class Tier {
     public static TierDTO getRank(double rank) {
         TierDTO tierDTO = new TierDTO();
 
-        if (rank >= 2200) {
+        if (rank >= 2000) {
             tierDTO.setTier("challenger");
             tierDTO.setTierNumber(rank + "");
             return tierDTO;
-        } else if (rank >= 1800) {
-            return getMasterRank(rank, tierDTO);
         } else if (rank >= 1600) {
-            return getDiamondRank(rank, tierDTO);
+            return getMasterRank(rank, tierDTO);
         } else if (rank >= 1400) {
+            return getDiamondRank(rank, tierDTO);
+        } else if (rank >= 1300) {
             return getEmeraldRank(rank, tierDTO);
         } else if (rank >= 1200) {
             return getPlatinumRank(rank, tierDTO);
-        } else if (rank >= 1000) {
+        } else if (rank >= 1100) {
             return getGoldRank(rank, tierDTO);
-        } else if (rank >= 800) {
+        } else if (rank >= 900) {
             return getSilverRank(rank, tierDTO);
-        } else if (rank >= 600) {
+        } else if (rank >= 700) {
             return getIronRank(rank, tierDTO);
         } else {
             tierDTO.setTier("unranked");
@@ -35,11 +35,11 @@ public class Tier {
 
     // 아이언 등급
     public static TierDTO getIronRank(double rank, TierDTO tierDTO) {
-        if (rank >= 750) {
+        if (rank >= 850) {
             tierDTO.setTier("iron");
             tierDTO.setTierNumber("1");
             return tierDTO;
-        } else if (rank >= 700) {
+        } else if (rank >= 800) {
             tierDTO.setTier("iron");
             tierDTO.setTierNumber("2");
             return tierDTO;
@@ -56,15 +56,15 @@ public class Tier {
 
     // 실버 등급
     public static TierDTO getSilverRank(double rank, TierDTO tierDTO) {
-        if (rank >= 950) {
+        if (rank >= 1050) {
             tierDTO.setTier("silver");
             tierDTO.setTierNumber("1");
             return tierDTO;
-        } else if (rank >= 900) {
+        } else if (rank >= 1000) {
             tierDTO.setTier("silver");
             tierDTO.setTierNumber("2");
             return tierDTO;
-        } else if (rank >= 850) {
+        } else if (rank >= 950) {
             tierDTO.setTier("silver");
             tierDTO.setTierNumber("3");
             return tierDTO;
@@ -77,15 +77,15 @@ public class Tier {
 
     // 골드 등급
     public static TierDTO getGoldRank(double rank, TierDTO tierDTO) {
-        if (rank >= 1150) {
+        if (rank >= 1175) {
             tierDTO.setTier("gold");
             tierDTO.setTierNumber("1");
             return tierDTO;
-        } else if (rank >= 1100) {
+        } else if (rank >= 1150) {
             tierDTO.setTier("gold");
             tierDTO.setTierNumber("2");
             return tierDTO;
-        } else if (rank >= 1050) {
+        } else if (rank >= 1125) {
             tierDTO.setTier("gold");
             tierDTO.setTierNumber("3");
             return tierDTO;
@@ -98,15 +98,15 @@ public class Tier {
 
     // 플래티넘 등급
     public static TierDTO getPlatinumRank(double rank, TierDTO tierDTO) {
-        if (rank >= 1350) {
+        if (rank >= 1275) {
             tierDTO.setTier("platinum");
             tierDTO.setTierNumber("1");
             return tierDTO;
-        } else if (rank >= 1300) {
+        } else if (rank >= 1250) {
             tierDTO.setTier("platinum");
             tierDTO.setTierNumber("2");
             return tierDTO;
-        } else if (rank >= 1250) {
+        } else if (rank >= 1225) {
             tierDTO.setTier("platinum");
             tierDTO.setTierNumber("3");
             return tierDTO;
@@ -119,15 +119,15 @@ public class Tier {
 
     // 에메랄드 등급
     public static TierDTO getEmeraldRank(double rank, TierDTO tierDTO) {
-        if (rank >= 1450) {
+        if (rank >= 1375) {
             tierDTO.setTier("emerald");
             tierDTO.setTierNumber("1");
             return tierDTO;
-        } else if (rank >= 1400) {
+        } else if (rank >= 1350) {
             tierDTO.setTier("emerald");
             tierDTO.setTierNumber("2");
             return tierDTO;
-        } else if (rank >= 1350) {
+        } else if (rank >= 1325) {
             tierDTO.setTier("emerald");
             tierDTO.setTierNumber("3");
             return tierDTO;
@@ -162,15 +162,15 @@ public class Tier {
 
     // 마스터 등급
     public static TierDTO getMasterRank(double rank, TierDTO tierDTO) {
-        if (rank >= 1700) {
+        if (rank >= 1900) {
             tierDTO.setTier("master");
             tierDTO.setTierNumber("1");
             return tierDTO;
-        } else if (rank >= 1650) {
+        } else if (rank >= 1800) {
             tierDTO.setTier("master");
             tierDTO.setTierNumber("2");
             return tierDTO;
-        } else if (rank >= 1600) {
+        } else if (rank >= 1700) {
             tierDTO.setTier("master");
             tierDTO.setTierNumber("3");
             return tierDTO;

@@ -4,8 +4,16 @@
     justify-content: center;
 }
 
-.container-content {
-    width: 500px;
+@media only screen and (min-width: 601px) {
+    .container-content {
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container-content {
+        width: 100%;
+    }
 }
 
 .logo-container {
@@ -75,7 +83,7 @@
 /* 사용자 카드 스타일 */
 .user-card {
     display: flex;
-    width: 500px;
+    width: 100%;
     height: 100px;
     background: #ffffff;
     border-radius: 10px;
