@@ -17,7 +17,7 @@ public class SpringConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/", "/login", "/images", "/styles").permitAll();
+                    registry.requestMatchers("/", "/login", "/images/**", "/styles/**").permitAll();
                     registry.anyRequest().authenticated();
                 })
                 .oauth2Login(oauth2 -> oauth2.successHandler(oauth2LoginSuccessHandler))
