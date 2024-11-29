@@ -52,7 +52,7 @@ public class MainController {
         if (user == null) {
             return "login";
         }
-t
+
         return "nicknameSetting";
     }
 
