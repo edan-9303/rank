@@ -25,6 +25,8 @@ public class Tier {
         } else if (rank >= 900) {
             return getSilverRank(rank, tierDTO);
         } else if (rank >= 700) {
+            return getBronzeRank(rank, tierDTO);
+        } else if (rank >= 500) {
             return getIronRank(rank, tierDTO);
         } else {
             tierDTO.setTier("unranked");
@@ -35,20 +37,40 @@ public class Tier {
 
     // 아이언 등급
     public static TierDTO getIronRank(double rank, TierDTO tierDTO) {
-        if (rank >= 850) {
+        if (rank >= 650) {
             tierDTO.setTier("iron");
             tierDTO.setTierNumber("1");
             return tierDTO;
-        } else if (rank >= 800) {
+        } else if (rank >= 625) {
             tierDTO.setTier("iron");
             tierDTO.setTierNumber("2");
             return tierDTO;
-        } else if (rank >= 650) {
+        } else if (rank >= 600) {
             tierDTO.setTier("iron");
             tierDTO.setTierNumber("3");
             return tierDTO;
         } else {
             tierDTO.setTier("iron");
+            tierDTO.setTierNumber("4");
+            return tierDTO;
+        }
+    }
+
+    public static TierDTO getBronzeRank(double rank, TierDTO tierDTO) {
+        if (rank >= 850) {
+            tierDTO.setTier("bronze");
+            tierDTO.setTierNumber("1");
+            return tierDTO;
+        } else if (rank >= 800) {
+            tierDTO.setTier("bronze");
+            tierDTO.setTierNumber("2");
+            return tierDTO;
+        } else if (rank >= 750) {
+            tierDTO.setTier("bronze");
+            tierDTO.setTierNumber("3");
+            return tierDTO;
+        } else {
+            tierDTO.setTier("bronze");
             tierDTO.setTierNumber("4");
             return tierDTO;
         }
