@@ -3,6 +3,8 @@ package com.example.airlinerating.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class User {
 
@@ -12,6 +14,7 @@ public class User {
     private String name;
 
     private String nickName;
+    private LocalDateTime ratingUpdatedAt;
 
     private String profilePictureUrl;
     private double rating;
@@ -82,5 +85,13 @@ public class User {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public LocalDateTime getRatingUpdatedAt() {
+        return ratingUpdatedAt;
+    }
+
+    public void setRatingUpdatedAt(LocalDateTime ratingUpdatedAt) {
+        this.ratingUpdatedAt = ratingUpdatedAt;
     }
 }
