@@ -16,12 +16,15 @@ public class User {
     private String profilePictureUrl;
     private double rating;
 
-    public User(String email, String name, String nickName, String profilePictureUrl, int rating) {
+    private String title;
+
+    public User(String email, String name, String nickName, String profilePictureUrl, int rating, String title) {
         this.email = email;
         this.name = name;
         this.nickName = nickName;
         this.profilePictureUrl = profilePictureUrl;
         this.rating = rating;
+        this.title = "none";
     }
 
 
@@ -70,5 +73,14 @@ public class User {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 public class Game {
@@ -18,16 +22,46 @@ public class Game {
     private int rebuyins;
     private double earnedRating;
     private double lostRating;
+    private String gameDate;
+    @CreatedDate
+    private LocalDateTime createdAt;
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
-    public Game(String gameId, String email, int ranking, int rebuyins) {
+    public Game(String gameId, String email, int ranking, int rebuyins, String gameDate) {
         this.gameId = gameId;
         this.email = email;
         this.ranking = ranking;
         this.rebuyins = rebuyins;
+        this.gameDate = gameDate;
     }
 
     public Game() {
 
+    }
+
+    public String getGameDate() {
+        return gameDate;
+    }
+
+    public void setGameDate(String gameDate) {
+        this.gameDate = gameDate;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public double getEarnedRating() {

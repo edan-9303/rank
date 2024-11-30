@@ -38,6 +38,7 @@ public class UserController {
     public ResponseEntity<String> addGame(@RequestParam("email[]") List<String> emails,
                                           @RequestParam("rank[]") List<Integer> ranks,
                                           @RequestParam("rebuyin[]") List<Integer> rebuyins,
+                                          @RequestParam("gameDate") String gameDate,
                                           HttpServletResponse response) throws IOException {
         List<Game> games = new ArrayList<>();
         String gameId = UUID.randomUUID().toString();
@@ -46,7 +47,7 @@ public class UserController {
             Integer userRank = ranks.get(i);
             Integer rebuyin = rebuyins.get(i);
 
-            Game game = new Game(gameId, email, userRank, rebuyin);
+            Game game = new Game(gameId, email, userRank, rebuyin, gameDate);
             games.add(game);
         }
         System.out.println(games);

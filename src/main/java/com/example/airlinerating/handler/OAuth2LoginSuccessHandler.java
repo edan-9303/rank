@@ -37,7 +37,7 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         User newUser = new User();
         // 사용자 정보가 없으면 새로 저장
         if (user.isEmpty()) {
-            newUser = new User(email, name, "", profilePictureUrl, -1);
+            newUser = new User(email, name, "", profilePictureUrl, -1, "");
             // rank
             // mmr 기본은 -1 = unranked
             // mmr 처음 머니인 = 1200점 시작

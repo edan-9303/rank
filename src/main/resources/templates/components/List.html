@@ -8,11 +8,14 @@
         </div>
         <div class="user-info">
             <div class="user-info-container">
-                <div style="display: flex;">
+                <div style="display: flex; height: 35px; align-items: center;">
                     <img src="https://s-lol-web.op.gg/images/icon/icon-op-lp.svg?v=1729058249"
                          th:if="${iterStat.index == 0}"/>
                     <div class="user-nickname"
                          th:text="${user.nickName == '' ? '닉네임 없음' : user.nickName}"></div>
+                    <div class="user-title pro" th:if="${user.title=='pro'}" th:text="${user.title}"></div>
+                    <div class="user-title ace" th:if="${user.title=='ace'}" th:text="${user.title}"></div>
+
                 </div>
                 <!--                <img alt="대체 이미지" th:src="${user.profilePictureUrl}"/>-->
                 <div class="user-name" th:text="${user.name}"></div>

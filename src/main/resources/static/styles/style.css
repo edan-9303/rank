@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Paperlogy-8ExtraBold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -166,4 +173,20 @@
 .notice {
     font-size: 12px;
     color: #777777;
+}
+
+.user-title {
+    height: 13px;
+    padding: 5px;
+    margin-left: 10px;
+    border: 2px darkred solid;
+    border-radius: 10px;
+    font-size: 10px;
+    color: black;
+    font-family: Paperlogy-8ExtraBold, serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* 그림자 효과 */
+}
+
+.user-title.pro {
+    border: 2px cornflowerblue solid;
 }
