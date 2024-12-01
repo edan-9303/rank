@@ -10,6 +10,11 @@
     <div class="container-content">
         <div class="logo-container"></div>
         <form id="userForm" method="post" onsubmit="confirmSubmission(event)" th:action="@{/api/addGame}">
+            <div class="form-row">
+                <div class="form-item">
+                    <input class="" name="gameDate" placeholder="게임 날짜 입력"/>
+                </div>
+            </div>
             <div id="userContainer">
             </div>
             <p class="notice">회원 검색이 안되면 "게스트" 입력</p>
